@@ -1,0 +1,161 @@
+/* Обнуление отступов, чтобы ничего не вылезало */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-dark: #0a0a0b;
+  --header-bg: rgba(18, 18, 20, 0.95);
+  --accent: #ff4500;
+  --text-muted: #888;
+}
+
+body {
+  background-color: var(--bg-dark);
+  font-family: sans-serif;
+  overflow-x: hidden; /* Запрет горизонтального скролла на уровне всей страницы */
+}
+
+.reader-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Фиксированная шапка */
+.reader-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 65px;
+  background: var(--header-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  z-index: 1000;
+}
+
+.reader-nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  overflow: hidden; /* Чтобы длинные названия не выталкивали кнопки */
+}
+
+.back-btn {
+  background: #252527;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.reader-info h2 {
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Троеточие, если название слишком длинное */
+  max-width: 150px;
+}
+
+.reader-info span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.reader-settings {
+  display: flex;
+  gap: 10px;
+}
+
+.chapter-select {
+  background: #252527;
+  color: white;
+  border: 1px solid #3a3a3c;
+  padding: 5px 10px;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Область чтения */
+.reader-view {
+  flex: 1;
+  padding-top: 80px; /* Отступ, чтобы шапка не закрывала первую страницу */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.pages-list {
+  width: 100%;
+  max-width: 800px; /* Ограничение ширины для комфорта глаз */
+  margin: 0 auto;
+}
+
+.manga-page-wrapper {
+  width: 100%;
+  margin-bottom: 5px; /* Минимальный зазор для эстетики ленты */
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.manga-page-img {
+  width: 100%;      /* Растягивается на всю ширину родителя */
+  height: auto;     /* Сохраняет пропорции */
+  max-width: 100%;  /* ГАРАНТИЯ: не выйдет за пределы экрана */
+  display: block;
+}
+
+.page-number {
+  padding: 15px;
+  color: #444;
+  font-size: 0.8rem;
+  background: var(--bg-dark);
+  width: 100%;
+  text-align: center;
+}
+
+/* Нижняя панель */
+.reader-footer {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  background: var(--bg-dark);
+}
+
+.nav-btn {
+  padding: 12px 20px;
+  background: #252527;
+  color: white;
+  border: 1px solid #333;
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 1;
+  max-width: 200px;
+  transition: 0.2s;
+}
+
+.nav-btn.accent {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Адаптив для телефонов */
+@media (max-width: 600px) {
+  .reader-info h2 { max-width: 100px; }
+  .chapter-select { width: 100px; font-size: 0.8rem; }
+  .reader-header { padding: 0 10px; }
+}

@@ -1,0 +1,121 @@
+/* Основные переменные для удобной настройки */
+:root {
+  --bg-color: #0f0f10;
+  --card-bg: #1a1a1c;
+  --accent-color: #ff4500; /* Насыщенный оранжевый */
+  --text-main: #ffffff;
+  --text-muted: #a0a0a0;
+  --nav-height: 70px;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Стилизация Шапки */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+  padding: 0 5%;
+  background: rgba(15, 15, 16, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #2a2a2a;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--accent-color);
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+/* Поле поиска */
+.nav-links input {
+  background: #252527;
+  border: 1px solid #3a3a3c;
+  border-radius: 20px;
+  padding: 8px 16px;
+  color: white;
+  outline: none;
+  transition: border-color 0.3s;
+  width: 200px;
+}
+
+.nav-links input:focus {
+  border-color: var(--accent-color);
+}
+
+/* Стилизация Карточки */
+.manga-card {
+  width: 220px;
+  margin: 40px auto; /* Центрирование для примера */
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+.manga-card:hover {
+  transform: translateY(-10px);
+}
+
+.manga-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.manga-info {
+  padding: 15px;
+}
+
+.manga-info h3 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.manga-info span {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Адаптив под мобилки */
+@media (max-width: 768px) {
+  .nav-links { gap: 15px; }
+  .nav-links input { display: none; } /* Скрываем поиск на малых экранах */
+  .logo { font-size: 1.2rem; }
+}
